@@ -1,0 +1,10 @@
+<view class="home-page">
+  <view class="home-page__container">
+    <image
+      class="home-page__container--img"
+      mode="widthFix"
+      src="../../images/logo.png"
+    />
+    <view class="home-page__container--title">摸鱼了</view>
+  </view>
+</view>

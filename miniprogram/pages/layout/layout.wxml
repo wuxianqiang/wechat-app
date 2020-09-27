@@ -1,0 +1,23 @@
+<view class="recommend">
+  <view class="recommend__top">
+    <view
+      wx:for="{{list}}"
+      wx:key="index"
+      class="recommend__row {{current===item.key?'active':''}}"
+      bindtap="handleClick"
+      data-id="{{item.key}}">
+      {{item.title}}
+    </view>
+  </view>
+  <view class="recommend__dot" bindtap="handleDot" wx:if="{{dotFlag}}">
+    <image src="https://g.csdnimg.cn/side-toolbar/2.5/images/fanhuidingbucopy.png" class="recommend__dot--img"></image>
+  </view>
+  <view
+    class="recommend__container"
+    style="transform: translateX({{translateX}}px)">
+    <base-recommend id="recommend" bindshowdot="showDot" bindhidedot="hidedot"></base-recommend>
+    <base-hot id="hot" bindshowdot="showDot" bindhidedot="hidedot"></base-hot>
+    <base-recruit id="recruit" bindshowdot="showDot" bindhidedot="hidedot"></base-recruit>
+    <base-info id="info" bindshowdot="showDot" bindhidedot="hidedot"></base-info>
+  </view>
+</view>

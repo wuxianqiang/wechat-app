@@ -1,0 +1,27 @@
+<view>
+  <scroll-view
+    refresher-triggered="{{triggered}}"
+    bindscrolltolower="handleTolower"
+    bindrefresherrefresh="handleRefresh"
+    refresher-enabled="true"
+    scroll-y="true"
+    scroll-top="{{top}}"
+    scroll-with-animation="true"
+    bindscroll="handleScroll"
+    class="recommend__center recommend__center--four">
+    <view wx:for="{{recommendList}}" wx:key="post_id" class="recommend__item">
+      <view class="recommend__hader">
+        <view class="recommend__hader--title">{{item.post_title}}</view>
+        
+      </view>
+      <view class="recommend__content">
+        <text user-select="true">{{item.post_content }}</text>
+      </view>
+      <view class="recommend__footer">
+        <view>来自：爱范儿</view>
+        <view>{{item.created_at}}</view>
+      </view>
+    </view>
+    <view class="recommend__loading">加载中...</view>
+  </scroll-view>
+</view>

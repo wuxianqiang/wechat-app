@@ -24,6 +24,13 @@ page {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
+  font-family: 'Microsoft YaHei';
+  color: #333;
+  --border-color: #eee;
+  --title-color: #6c575d;
 }
 
 .userinfo, .uploader, .tunnel {

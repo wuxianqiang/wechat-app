@@ -1,0 +1,57 @@
+/* pages/recommend/recommend.wxss */
+
+.recommend {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.recommend__row {
+  flex: 1;
+}
+
+.recommend__top {
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 1px 5px rgba(150, 150, 150, 0.3);
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #f6f6f6;
+  width: 100%;
+  z-index: 88;
+}
+
+.recommend__container {
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+
+.active {
+  color: #2884f4;
+  font-weight: 900;
+}
+
+.recommend__dot {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recommend__dot--img {
+  width: 15px;
+  height: 15px;
+}

@@ -16,5 +16,48 @@ App({
     }
 
     this.globalData = {}
+  },
+  get (url, params = {}, header = {}) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url, // 仅为示例，并非真实的接口地址
+        header: {
+          'content-type': 'application/json', // 默认值
+          ...header
+        },
+        data: {
+          ...params
+        },
+        success: (res) => {
+          this.globalData[url] = res
+          resolve(res)
+        },
+        fail () {
+          reject(`请求 ${url} 失败！`)
+        }
+      })
+    })
+  },
+  post (url, params = {}, header = {}) {
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: url, // 仅为示例，并非真实的接口地址
+        data: {
+          ...params
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/json',
+          ...header
+        },
+        success: (res) => {
+          this.globalData[url] = res
+          resolve(res)
+        },
+        fail () {
+          reject(`请求 ${url} 失败！`)
+        }
+      })
+    })
   }
 })

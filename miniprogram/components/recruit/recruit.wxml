@@ -1,0 +1,34 @@
+<view>
+  <scroll-view
+    refresher-triggered="{{triggered}}"
+    bindrefresherrefresh="handleRefresh"
+    refresher-enabled="true"
+    scroll-y="true"
+    scroll-top="{{top}}"
+    scroll-with-animation="true"
+    bindscroll="handleScroll"
+    class="recommend__center recommend__center--three">
+    <view wx:for="{{list}}" wx:key="blinkId" class="recommend__item">
+      <view class="recommend__hader">
+        <view class="recommend__hader--title">{{item.target.titleArea.text}}</view>
+        
+      </view>
+      <view class="recommend__picture">
+        <image
+          bindtap="previewAvatar"
+          data-src="{{item.target.imageArea.url}}"
+          mode="widthFix"
+          src="{{item.target.imageArea.url}}"
+          class="recommend__picture--img"
+        />
+      </view>
+      <view class="recommend__content">
+        <text user-select="true">{{item.target.excerptArea.text }}</text>
+      </view>
+      <view class="recommend__footer">
+        <view>来自：知乎</view>
+        <view>{{item.target.metricsArea.text}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
