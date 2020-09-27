@@ -110,10 +110,9 @@
 
 .recommend__img--list {
   width: 100px;
-  height: 100px;
   overflow: hidden;
   margin-right: 5px;
-  background: #eee;
+  max-height: 180px;
 }
 
 /* [face]monkey:15.gif[/face] */

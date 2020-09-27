@@ -67,7 +67,18 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () {
+    return {
+      title: '「摸鱼」是什么梗？',
+      path: '/pages/homePage/homePage'
+    }
+  },
+  onShareTimeline: function () {
+    return {
+      title: '「摸鱼」是什么梗？',
+      imageUrl: '../../images/logo.png'
+    }
+  },
   /**
    * 用户点击标题
    */
