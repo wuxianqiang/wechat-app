@@ -17,7 +17,9 @@
   height: 30px;
   border-radius: 50%;
   margin-right: 12px;
-  background: #eee;
+  background: url("https://upload-images.jianshu.io/upload_images/5282620-8ef82f9622112025.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") center center no-repeat;
+  background-size: cover;
+  background-color: #eee;
 }
 
 .recommend__hader {
@@ -113,6 +115,7 @@
   height: 100px;
   overflow: hidden;
   margin-right: 5px;
+  background: #eee;
 }
 
 /* [face]monkey:15.gif[/face] */

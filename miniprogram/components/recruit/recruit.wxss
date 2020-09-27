@@ -17,9 +17,7 @@
   height: 30px;
   border-radius: 50%;
   margin-right: 12px;
-  background: url("https://profile.csdnimg.cn/0/4/C/2_qq_30328203") center
-    center no-repeat;
-  background-size: cover;
+  background: #eee;
 }
 
 .recommend__hader {

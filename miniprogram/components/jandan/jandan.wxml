@@ -5,44 +5,42 @@
     bindrefresherrefresh="handleRefresh"
     refresher-enabled="true"
     scroll-y="true"
-    class="recommend__center recommend__center--one"
     scroll-top="{{top}}"
     scroll-with-animation="true"
     bindscroll="handleScroll"
-  >
+    class="recommend__center recommend__center--fix">
     <view wx:for="{{recommendList}}" wx:key="msg_id" class="recommend__item">
       <view class="recommend__hader">
         <image
-          bindtap="previewAvatar"
-          data-src="{{item.author_user_info.avatar_large}}"
+          data-src="../../images/logo.png"
           class="recommend__avatar"
-          src="{{item.author_user_info.avatar_large}}"
+          src="../../images/logo.png"
         />
-        <view>{{item.author_user_info.user_name}}</view>
+        <view>{{item.author}}</view>
       </view>
       <view>
         <view class="recommend__content">
-          <text user-select="true">{{item.msg_Info.content}}</text>
+          <text user-select="true">{{item.content}}</text>
         </view>
         <view class="recommend__img">
           <view
-            wx:for="{{item.msg_Info.pic_list}}"
+            wx:for="{{item.images}}"
             wx:key="index"
             wx:for-item="picture"
             class="recommend__img--list"
           >
             <image
               bindtap="previewImage"
-              data-src="{{picture}}"
-              data-urls="{{item.msg_Info.pic_list}}"
+              data-src="{{picture.full_url}}"
+              data-urls="{{item.images}}"
               mode="widthFix"
-              src="{{picture}}"
+              src="{{picture.full_url}}"
               class="recommend__img--list"
             />
           </view>
         </view>
       </view>
-      <view class="recommend__footer">来自：掘金</view>
+      <view class="recommend__footer">来自：煎蛋</view>
     </view>
     <view class="recommend__loading">加载中...</view>
   </scroll-view>

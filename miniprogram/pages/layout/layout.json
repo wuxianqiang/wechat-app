@@ -3,6 +3,8 @@
     "base-recommend": "/components/recommend/recommend",
     "base-hot": "/components/hot/hot",
     "base-recruit": "/components/recruit/recruit",
-    "base-info": "/components/info/info"
+    "base-info": "/components/info/info",
+    "base-topic": "/components/topic/topic",
+    "base-jandan": "/components/jandan/jandan"
   }
 }

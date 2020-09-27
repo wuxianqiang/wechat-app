@@ -15,7 +15,9 @@ Page({
       {title: '推荐', key: 'recommend'},
       {title: '热门', key: 'hot'},
       {title: '榜单', key: 'recruit'},
-      {title: '快讯', key: 'info'}
+      {title: '快讯', key: 'info'},
+      {title: '话题', key: 'topic'},
+      {title: '树洞', key: 'jandan'},
     ]
   },
 

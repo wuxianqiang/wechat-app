@@ -17,7 +17,24 @@
   height: 30px;
   border-radius: 50%;
   margin-right: 12px;
-  background: #eee;
+  background: url("https://profile.csdnimg.cn/0/4/C/2_qq_30328203") center
+    center no-repeat;
+  background-size: cover;
+}
+
+.recommend__hader {
+  padding: 20px 20px 20px 20px;
+  align-items: center;
+}
+
+.recommend__hader--title {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.recommend__hader--subtitle {
+  font-size: 12px;
+  color: #999;
 }
 
 .recommend__hader {
@@ -40,6 +57,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 20px 20px 20px;
+  height: 144px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.recommend__picture--img {
+  width: 100%;
 }
 
 .recommend__top {
@@ -78,6 +103,12 @@
 .recommend__center--three {
   transform: translateX(200%);
 }
+.recommend__center--four {
+  transform: translateX(300%);
+}
+.recommend__center--five {
+  transform: translateX(400%);
+}
 .recommend__container {
   height: 100%;
   transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
@@ -87,7 +118,10 @@
   font-size: 10px;
   line-height: 30px;
   color: #999;
-  padding-left: 20px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .recommend__loading {
@@ -99,21 +133,6 @@
 
 .active {
   color: #30ca96;
-}
-
-.recommend__img {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin: 0 20px;
-}
-
-.recommend__img--list {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  margin-right: 5px;
-  background: #eee;
 }
 
 /* [face]monkey:15.gif[/face] */

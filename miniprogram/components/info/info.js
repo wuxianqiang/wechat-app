@@ -29,7 +29,6 @@ Component({
           recommendList: list,
           cursor: this.data.cursor + 20
         })
-        console.log(list)
       })
     },
     detached: function() {
@@ -105,7 +104,7 @@ Component({
     },
     previewImage (e) {
       const current = e.target.dataset.src
-      let urls = e.target.dataset.urls || current
+      let urls = e.target.dataset.urls || [current]
       urls = urls.map((item) => {
         if (typeof item === 'object') {
           return item.url

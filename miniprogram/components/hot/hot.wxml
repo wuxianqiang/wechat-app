@@ -19,28 +19,7 @@
         />
         <view>{{item.flowerName.flowerName || item.nickname || '匿名'}}</view>
       </view>
-      <view wx:if="{{item.pictures.length<2}}">
-        <view class="recommend__content">
-          <text user-select="true">{{item.content || '无聊。。。'}}</text>
-        </view>
-        <view>
-          <view
-            wx:for="{{item.pictures}}"
-            wx:key="index"
-            wx:for-item="picture"
-            class="recommend__picture"
-          >
-            <image
-              bindtap="previewImage"
-              data-src="{{picture.url}}"
-              data-urls="{{item.pictures}}"
-              mode="widthFix"
-              src="{{picture.url}}"
-            />
-          </view>
-        </view>
-      </view>
-      <view wx:if="{{item.pictures.length>1}}">
+      <view>
         <view class="recommend__content">
           <text user-select="true">{{item.content || '无聊。。。'}}</text>
         </view>
