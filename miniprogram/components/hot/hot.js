@@ -20,7 +20,8 @@ Component({
         item.content = item.content.replace(/\[face\].+\[\/face\]/g, '')
         item.pictures = item.pictures || []
       })
-      this.setData({ list: result.data })
+      const list = result.data
+      this.setData({ list: list, cursor: list[list.length - 1].blinkId  })
     },
     detached: function() {
       // 在组件实例被从页面节点树移除时执行
