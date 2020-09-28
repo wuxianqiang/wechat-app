@@ -9,10 +9,10 @@
       {{item.title}}
     </view>
   </view>
-  <view class="recommend__dot" bindtap="handleDot" wx:if="{{dotFlag}}">
-    <image src="https://g.csdnimg.cn/side-toolbar/2.5/images/fanhuidingbucopy.png" class="recommend__dot--img"></image>
+  <view class="recommend__dot" bindtap="handleDot" style="transform: translateY({{translateY}}px);">
+    顶部
   </view>
-  <view class="recommend__share">
+  <view class="recommend__share" style="transform: translateY({{translateY}}px);">
     <button open-type="share" class="recommend__link">分享</button>
   </view>
   <view

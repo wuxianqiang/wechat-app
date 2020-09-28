@@ -55,7 +55,7 @@ Page({
         app.get(recruit, null, zhihu)
       ]).then(() => {
         wx.redirectTo({
-          url: '/pages/layout/layout?id=1'
+          url: '/pages/layout/layout'
         })
       })
     },

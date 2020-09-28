@@ -18,6 +18,7 @@ Page({
     dotFlag: false,
     theme: 'light',
     transition: 0.3,
+    translateY: 52,
     list: [
       {title: '推荐', key: 'recommend'},
       {title: '热门', key: 'hot'},
@@ -114,13 +115,13 @@ Page({
    * 显示返回顶部的按钮
    */
   showDot () {
-    this.setData({ dotFlag: true })
+    this.setData({ dotFlag: true, translateY: 0 })
   },
   /**
    * 隐藏返回顶部的按钮
    */
   hidedot () {
-    this.setData({ dotFlag: false })
+    this.setData({ dotFlag: false, translateY: 52 })
   },
   setTheme (res) {
     const theme = res.theme
@@ -161,10 +162,14 @@ Page({
       if (index === min) {
         index = min + 1
       }
+      const newIndex = index - 1
+      const key = list[newIndex].key
+      const componentInstance = this.selectComponent(`#${key}`)
+      componentInstance && componentInstance.resetPage && componentInstance.resetPage()
       this.setData({
         transition: 0.3,
-        translateX: -(index - 1) * winWidth,
-        current: list[index - 1].key
+        translateX: -newIndex * winWidth,
+        current: key
       })
     }
     if (clientX < startX) {
@@ -176,10 +181,14 @@ Page({
       if (index === max) {
         index = max - 1
       }
+      const newIndex = index + 1
+      const key = list[newIndex].key
+      const componentInstance = this.selectComponent(`#${key}`)
+      componentInstance && componentInstance.resetPage && componentInstance.resetPage()
       this.setData({
         transition: 0.3,
-        translateX: -(index + 1) * winWidth,
-        current: list[index + 1].key
+        translateX: -newIndex * winWidth,
+        current: key
       })
     }
   },
@@ -189,11 +198,8 @@ Page({
     const clientY = touches.clientY
     const x = Math.abs(clientX - startX)
     const y = Math.abs(clientY - startY)
-    if ((!disabled && x < y) || x < 5) {
+    if ((!disabled && x < y) || (x < 5) || disabled) {
       disabled = true
-      return
-    }
-    if (disabled) {
       return
     }
     isMove = true
