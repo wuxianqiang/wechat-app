@@ -1,4 +1,4 @@
-<view class="home-page">
+<view class="home-page" style="background: {{color}};">
   <view class="home-page__container">
     <image
       class="home-page__container--img"

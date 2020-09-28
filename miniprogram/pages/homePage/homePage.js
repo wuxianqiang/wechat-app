@@ -10,7 +10,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-  
+      color: '#ffffff'
     },
   
     /**
@@ -39,6 +39,16 @@ Page({
         'origin': 'https://www.zhihu.com',
         'referer': 'https://www.zhihu.com/hot'
       }
+      wx.getSystemInfo({
+        success: (res) => {
+          const theme = res.theme
+          if (theme === 'dark') {
+            this.setData({ color: '#111111' })
+          } else {
+            this.setData({ color: '#ffffff' })
+          }
+        }
+      })
       Promise.all([
         app.get(hot),
         app.post(recommend, params, header),

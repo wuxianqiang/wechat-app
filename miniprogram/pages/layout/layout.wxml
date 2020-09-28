@@ -16,8 +16,12 @@
     <button open-type="share" class="recommend__link">分享</button>
   </view>
   <view
+    bind:touchstart="handleTouchStart"
+    bind:touchend="handleTouchEnd"
+    bind:touchmove="handleTouchMove"
     class="recommend__container"
-    style="transform: translateX({{translateX}}px)">
+    bind:transitionend="handleEnd"
+    style="transform: translateX({{translateX}}px);transition: transform {{transition}}s cubic-bezier(0.465, 0.183, 0.153, 0.946);">
     <base-recommend id="recommend" bindshowdot="showDot" bindhidedot="hidedot"></base-recommend>
     <base-hot id="hot" bindshowdot="showDot" bindhidedot="hidedot"></base-hot>
     <base-recruit id="recruit" bindshowdot="showDot" bindhidedot="hidedot"></base-recruit>

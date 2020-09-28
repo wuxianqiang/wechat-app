@@ -2,6 +2,11 @@ const app = getApp();
 const url = "https://blink-open-api.csdn.net/v1/pc/blink/newBlink";
 const recommend = 'https://apinew.juejin.im/recommend_api/v1/short_msg/recommend'
 let winWidth = 0
+let startX = 0
+let oldX = 0
+let isMove = false
+let disabled = false
+let startY = 0
 // pages/homePage/homePage.js
 Page({
   /**
@@ -12,6 +17,7 @@ Page({
     translateX: 0,
     dotFlag: false,
     theme: 'light',
+    transition: 0.3,
     list: [
       {title: '推荐', key: 'recommend'},
       {title: '热门', key: 'hot'},
@@ -30,34 +36,12 @@ Page({
       success: (res) => {
         winWidth = res.windowWidth
         this.setData({ theme: res.theme })
-        const theme = res.theme
-        if (theme === 'dark') {
-          wx.setNavigationBarColor({
-            frontColor: '#ffffff',
-            backgroundColor: '#111111'
-          })
-        } else {
-          wx.setNavigationBarColor({
-            frontColor: '#111111',
-            backgroundColor: "#ffffff",
-          })
-        }
+        this.setTheme(res)
       }
     })
     wx.onThemeChange((res) => {
       this.setData({ theme: res.theme })
-      const theme = res.theme
-      if (theme === 'dark') {
-        wx.setNavigationBarColor({
-          frontColor: '#ffffff',
-          backgroundColor: '#111111'
-        })
-      } else {
-        wx.setNavigationBarColor({
-          frontColor: '#111111',
-          backgroundColor: "#ffffff",
-        })
-      }
+      this.setTheme(res)
     })
   },
 
@@ -137,5 +121,88 @@ Page({
    */
   hidedot () {
     this.setData({ dotFlag: false })
+  },
+  setTheme (res) {
+    const theme = res.theme
+    if (theme === 'dark') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#111111'
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#111111',
+        backgroundColor: "#ffffff",
+      })
+    }
+  },
+  handleTouchStart (e) {
+    const touches = e.changedTouches[0]
+    startX = touches.clientX
+    startY = touches.clientY
+    oldX = this.data.translateX
+    this.setData({ transition: 0 })
+  },
+  handleTouchEnd (e) {
+    if (!isMove || disabled) {
+      this.setData({ transition: 0.3, translateX: oldX })
+      disabled = false
+      return
+    }
+    isMove = false
+    disabled = true
+    const clientX = e.changedTouches[0].clientX
+    if (clientX > startX) {
+      // console.log('往右')
+      const current = this.data.current
+      const list = this.data.list
+      let index = list.findIndex(item => item.key === current)
+      const min = 0
+      if (index === min) {
+        index = min + 1
+      }
+      this.setData({
+        transition: 0.3,
+        translateX: -(index - 1) * winWidth,
+        current: list[index - 1].key
+      })
+    }
+    if (clientX < startX) {
+      // console.log('往左')
+      const current = this.data.current
+      const list = this.data.list
+      let index = list.findIndex(item => item.key === current)
+      const max = list.length - 1
+      if (index === max) {
+        index = max - 1
+      }
+      this.setData({
+        transition: 0.3,
+        translateX: -(index + 1) * winWidth,
+        current: list[index + 1].key
+      })
+    }
+  },
+  handleTouchMove (e) {
+    const touches = e.changedTouches[0]
+    const clientX = touches.clientX
+    const clientY = touches.clientY
+    const x = Math.abs(clientX - startX)
+    const y = Math.abs(clientY - startY)
+    if ((!disabled && x < y) || x < 5) {
+      disabled = true
+      return
+    }
+    if (disabled) {
+      return
+    }
+    isMove = true
+    this.setData({
+      translateX: e.changedTouches[0].clientX - startX + oldX
+    })
+  },
+  handleEnd () {
+    disabled = false
+    this.setData({ transition: 0.3 })
   }
 });
