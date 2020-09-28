@@ -77,6 +77,23 @@
   transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
 }
 
+.recommend__post {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+  z-index: 99;
+  border: 1px solid  #eee;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: var(--avatar-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(52px);
+  transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+}
+
 .recommend__link {
   padding: 0;
   width: 30px;

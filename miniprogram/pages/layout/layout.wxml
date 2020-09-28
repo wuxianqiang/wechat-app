@@ -24,8 +24,6 @@
     style="transform: translateX({{translateX}}px);transition: transform {{transition}}s cubic-bezier(0.465, 0.183, 0.153, 0.946);">
     <base-recommend id="recommend" bindshowdot="showDot" bindhidedot="hidedot"></base-recommend>
     <base-hot id="hot" bindshowdot="showDot" bindhidedot="hidedot"></base-hot>
-    <base-recruit id="recruit" bindshowdot="showDot" bindhidedot="hidedot"></base-recruit>
-    <base-info id="info" bindshowdot="showDot" bindhidedot="hidedot"></base-info>
     <base-topic id="topic" bindshowdot="showDot" bindhidedot="hidedot"></base-topic>
     <base-jandan id="jandan" bindshowdot="showDot" bindhidedot="hidedot"></base-jandan>
   </view>

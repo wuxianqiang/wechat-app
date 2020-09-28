@@ -3,6 +3,7 @@
     "pages/homePage/homePage",
     "pages/index/index",
     "pages/layout/layout",
+    "pages/post/post",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

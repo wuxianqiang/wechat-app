@@ -39,7 +39,7 @@
 }
 
 .recommend__center--fix {
-  transform: translateX(500%);
+  transform: translateX(300%);
 }
 
 .recommend__footer {
