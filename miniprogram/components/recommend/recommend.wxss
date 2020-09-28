@@ -9,7 +9,7 @@
 
 .recommend__item {
   margin-bottom: 10px;
-  background: #fff;
+  background: var(--grey-color);
 }
 
 .recommend__avatar {
@@ -29,6 +29,7 @@
   align-items: center;
   font-size: 16px;
   font-weight: 900;
+  color: var(--title-color);
 }
 
 .recommend__content {
@@ -36,6 +37,7 @@
   white-space: wrap;
   word-break: break-all;
   font-size: 14px;
+  color: var(--content-color);
 }
 
 .recommend__picture {

@@ -11,6 +11,7 @@ Page({
     current: 'recommend',
     translateX: 0,
     dotFlag: false,
+    theme: 'light',
     list: [
       {title: '推荐', key: 'recommend'},
       {title: '热门', key: 'hot'},
@@ -28,6 +29,34 @@ Page({
     wx.getSystemInfo({
       success: (res) => {
         winWidth = res.windowWidth
+        this.setData({ theme: res.theme })
+        const theme = res.theme
+        if (theme === 'dark') {
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#111111'
+          })
+        } else {
+          wx.setNavigationBarColor({
+            frontColor: '#111111',
+            backgroundColor: "#ffffff",
+          })
+        }
+      }
+    })
+    wx.onThemeChange((res) => {
+      this.setData({ theme: res.theme })
+      const theme = res.theme
+      if (theme === 'dark') {
+        wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: '#111111'
+        })
+      } else {
+        wx.setNavigationBarColor({
+          frontColor: '#111111',
+          backgroundColor: "#ffffff",
+        })
       }
     })
   },

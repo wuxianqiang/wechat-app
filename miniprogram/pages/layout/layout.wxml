@@ -1,4 +1,4 @@
-<view class="recommend">
+<view class="recommend {{theme}}">
   <view class="recommend__top">
     <view
       wx:for="{{list}}"
@@ -11,6 +11,9 @@
   </view>
   <view class="recommend__dot" bindtap="handleDot" wx:if="{{dotFlag}}">
     <image src="https://g.csdnimg.cn/side-toolbar/2.5/images/fanhuidingbucopy.png" class="recommend__dot--img"></image>
+  </view>
+  <view class="recommend__share">
+    <button open-type="share" class="recommend__link">分享</button>
   </view>
   <view
     class="recommend__container"
