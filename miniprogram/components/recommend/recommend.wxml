@@ -35,7 +35,7 @@
               bindtap="previewImage"
               data-src="{{picture}}"
               data-urls="{{item.msg_Info.pic_list}}"
-              mode="widthFix"
+              mode="aspectFill"
               src="{{picture}}"
               class="recommend__img--list"
             />

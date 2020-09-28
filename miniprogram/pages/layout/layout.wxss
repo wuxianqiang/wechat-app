@@ -18,11 +18,9 @@
   font-size: 14px;
   display: flex;
   flex-direction: row;
-  /* box-shadow: 0 1px 5px rgba(150, 150, 150, 0.3); */
   position: fixed;
   left: 0;
   top: 0;
-  /* background: #f6f6f6; */
   width: 100%;
   z-index: 88;
   background: var(--background-color);
@@ -30,7 +28,6 @@
 
 .recommend__container {
   height: 100%;
-  /* transition: transform 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946); */
 }
 
 .active {
@@ -89,12 +86,16 @@
   --title-color: #d0d0d0;
   --content-color: #555555;
   --grey-color: #191919;
+  --avatar-bg: #000;
+  --loading-color: #000;
 }
 
 .light {
   background: #f6f6f6;
   --background-color:  #f6f6f6;
-  /* --title-color: #d0d0d0; */
-  /* --content-color: #555555; */
+  --title-color: #333;
+  --content-color: #333;
   --grey-color: #fff;
+  --avatar-bg: #eee;
+  --loading-color: #999;
 }

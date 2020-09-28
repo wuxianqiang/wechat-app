@@ -33,7 +33,7 @@
               bindtap="previewImage"
               data-src="{{picture.full_url}}"
               data-urls="{{item.images}}"
-              mode="widthFix"
+              mode="aspectFill"
               src="{{picture.full_url}}"
               class="recommend__img--list"
             />
