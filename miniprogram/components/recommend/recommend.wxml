@@ -10,14 +10,18 @@
     scroll-with-animation="true"
     bindscroll="handleScroll"
   >
-    <view wx:for="{{recommendList}}" wx:key="msg_id" class="recommend__item">
+    <view wx:for="{{recommendList}}" wx:key="msg_id" wx:for-index="k" class="recommend__item recommend-{{k}}">
       <view class="recommend__hader">
-        <image
-          bindtap="previewAvatar"
-          data-src="{{item.author_user_info.avatar_large}}"
-          class="recommend__avatar"
-          src="{{item.author_user_info.avatar_large}}"
-        />
+        <view class="recommend__avatar">
+          <view class="recommend__avatar" wx:if="{{k < count}}">
+            <image
+              bindtap="previewAvatar"
+              data-src="{{item.author_user_info.avatar_large}}"
+              class="recommend__avatar"
+              src="{{item.author_user_info.avatar_large}}"
+            />
+          </view>
+        </view>
         <view>{{item.author_user_info.user_name}}</view>
       </view>
       <view>
@@ -31,14 +35,16 @@
             wx:for-item="picture"
             class="recommend__img--list"
           >
-            <image
-              bindtap="previewImage"
-              data-src="{{picture}}"
-              data-urls="{{item.msg_Info.pic_list}}"
-              mode="aspectFill"
-              src="{{picture}}"
-              class="recommend__img--list"
-            />
+            <view class="recommend__img--list" wx:if="{{k < count}}">
+              <image
+                bindtap="previewImage"
+                data-src="{{picture}}"
+                data-urls="{{item.msg_Info.pic_list}}"
+                mode="aspectFill"
+                src="{{picture}}"
+                class="recommend__img--list"
+              />
+            </view>
           </view>
         </view>
       </view>

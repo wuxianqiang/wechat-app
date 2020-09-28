@@ -9,7 +9,7 @@
     scroll-with-animation="true"
     bindscroll="handleScroll"
     class="recommend__center recommend__center--fix">
-    <view wx:for="{{recommendList}}" wx:key="msg_id" class="recommend__item">
+    <view wx:for="{{recommendList}}" wx:key="msg_id" wx:for-index="k" class="recommend__item jiandan-{{k}}">
       <view class="recommend__hader">
         <image
           data-src="../../images/logo.png"
@@ -19,7 +19,7 @@
         <view>{{item.author}}</view>
       </view>
       <view>
-        <view class="recommend__content">
+        <view class="recommend__content" wx:if="{{item.content}}">
           <text user-select="true">{{item.content}}</text>
         </view>
         <view class="recommend__img">
@@ -29,14 +29,16 @@
             wx:for-item="picture"
             class="recommend__img--list"
           >
-            <image
-              bindtap="previewImage"
-              data-src="{{picture.full_url}}"
-              data-urls="{{item.images}}"
-              mode="aspectFill"
-              src="{{picture.full_url}}"
-              class="recommend__img--list"
-            />
+            <view class="recommend__img--list" wx:if="{{k < count}}">
+              <image
+                bindtap="previewImage"
+                data-src="{{picture.full_url}}"
+                data-urls="{{item.images}}"
+                mode="aspectFill"
+                src="{{picture.full_url}}"
+                class="recommend__img--list"
+              />
+            </view>
           </view>
         </view>
       </view>

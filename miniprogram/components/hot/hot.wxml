@@ -9,14 +9,18 @@
     scroll-with-animation="true"
     bindscroll="handleScroll"
     class="recommend__center recommend__center--two">
-    <view wx:for="{{list}}" wx:key="index" class="recommend__item">
+    <view wx:for="{{list}}" wx:key="index" wx:for-index="k" class="recommend__item hot-{{k}}">
       <view class="recommend__hader">
-        <image
-          bindtap="previewAvatar"
-          data-src="{{item.avatar}}"
-          class="recommend__avatar"
-          src="{{item.avatar}}"
-        />
+        <view class="recommend__avatar">
+          <view class="recommend__avatar" wx:if="{{k < count}}">
+            <image
+              bindtap="previewAvatar"
+              data-src="{{item.avatar}}"
+              class="recommend__avatar"
+              src="{{item.avatar}}"
+            />
+          </view>
+        </view>
         <view>{{item.flowerName.flowerName || item.nickname || '匿名'}}</view>
       </view>
       <view>
@@ -30,14 +34,16 @@
             wx:for-item="picture"
             class="recommend__img--list"
           >
-            <image
-              bindtap="previewImage"
-              data-src="{{picture.url}}"
-              data-urls="{{item.pictures}}"
-              mode="aspectFill"
-              src="{{picture.url}}"
-              class="recommend__img--list"
-            />
+            <view class="recommend__img--list" wx:if="{{k < count}}">
+              <image
+                bindtap="previewImage"
+                data-src="{{picture.url}}"
+                data-urls="{{item.pictures}}"
+                mode="aspectFill"
+                src="{{picture.url}}"
+                class="recommend__img--list"
+              />
+            </view>
           </view>
         </view>
       </view>

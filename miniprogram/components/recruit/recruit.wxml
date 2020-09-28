@@ -8,19 +8,21 @@
     scroll-with-animation="true"
     bindscroll="handleScroll"
     class="recommend__center recommend__center--three">
-    <view wx:for="{{list}}" wx:key="blinkId" class="recommend__item">
+    <view wx:for="{{list}}" wx:key="blinkId" wx:for-index="k" class="recommend__item recruit-{{k}}">
       <view class="recommend__hader">
         <view class="recommend__hader--title">{{item.target.titleArea.text}}</view>
         
       </view>
-      <view class="recommend__picture">
-        <image
-          bindtap="previewAvatar"
-          data-src="{{item.target.imageArea.url}}"
-          mode="widthFix"
-          src="{{item.target.imageArea.url}}"
-          class="recommend__picture--img"
-        />
+      <view>
+        <view wx:if="{{k < count}}" class="recommend__picture">
+          <image
+            bindtap="previewAvatar"
+            data-src="{{item.target.imageArea.url}}"
+            mode="aspectFill"
+            src="{{item.target.imageArea.url}}"
+            class="recommend__picture--img"
+          />
+        </view>
       </view>
       <view class="recommend__content">
         <text user-select="true">{{item.target.excerptArea.text }}</text>

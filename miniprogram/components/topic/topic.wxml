@@ -17,14 +17,18 @@
       <view class="recommend__content">
         <text user-select="true">{{item.abstract }}</text>
       </view>
-      <view wx:for="{{item.viewpoints}}" wx:key="userId" class="recommend__item">
+      <view wx:for="{{item.viewpoints}}" wx:key="userId"  wx:for-index="k" class="recommend__item topic-{{k}}">
         <view class="recommend__hader">
-          <image
-            bindtap="previewAvatar"
-            data-src="{{item.avatarUrl}}"
-            class="recommend__avatar"
-            src="{{item.avatarUrl}}"
-          />
+          <view class="recommend__avatar">
+            <view wx:if="{{k < count}}" class="recommend__avatar">
+              <image
+                bindtap="previewAvatar"
+                data-src="{{item.avatarUrl}}"
+                class="recommend__avatar"
+                src="{{item.avatarUrl}}"
+              />
+            </view>
+          </view>
           <view>{{item.nickname}}</view>
         </view>
         <view>

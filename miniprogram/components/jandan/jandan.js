@@ -8,7 +8,9 @@ Component({
     recommendList: [],
     cursor: '',
     triggered: false,
-    top: 0
+    top: 0,
+    count: 0,
+    classNote: '.jiandan-'
   },
   lifetimes: {
     attached: function() {
@@ -34,6 +36,12 @@ Component({
           winHeight = res.windowHeight
         }
       })
+      // 可以先初始化首屏需要展示的图片
+      this.setData({
+        count: 5
+      })
+      // 开始监听节点，注意需要在onReady才能监听，此时节点才渲染
+      this.viewPort()
     }
   },
   methods: {
@@ -79,8 +87,10 @@ Component({
         this.setData({
           recommendList: list,
           cursor: list[list.length - 1].id,
-          triggered: false
+          triggered: false,
+          count: this.data.count + 5
         })
+        this.viewPort()
       })
     },
     previewAvatar (e) {
@@ -103,6 +113,25 @@ Component({
       wx.previewImage({
         current: current, // 当前显示图片的http链接
         urls: urls // 需要预览的图片http链接列表
+      })
+    },
+    viewPort () {
+      if ((this.data.count > this.data.recommendList.length) || !this.createIntersectionObserver) {
+        // 超出了范围不要再监听了或者根本就API不支持
+        return this.data.count = this.data.recommendList.length
+      }
+      
+      const intersectionObserver = this.createIntersectionObserver();
+      //这里bottom：100，是指显示区域以下 100px 时，就会触发回调函数。
+      intersectionObserver.relativeToViewport({ bottom: 100 }).observe(this.data.classNote + (this.data.count - 1), (res) => {
+        if (res.boundingClientRect.top > 0) {
+          console.log('出发')
+          intersectionObserver.disconnect()
+          this.setData({
+            count: this.data.count + 5
+          })
+          this.viewPort();
+        }
       })
     }
   }
